@@ -5,7 +5,7 @@
 int main(){
 	int i,j,k = 1;
 	double matrix_coef[20] = {2.0,1.0,1.0,1.0,1.0, 0.0,1.0,1.0,0.0,0.0, 0.0,0.0,0.0,1.0,1.0, 0.0,1.0,0.0,1.0,0.0};
-    
+
     glp_prob *lp;
 
 	int ia[1+1000], ja[1+1000];
@@ -47,7 +47,7 @@ int main(){
 			ia[k] = i; ja[k] = j; ar[k] = matrix_coef[k-1];
 			k++;
 		}
-	}	
+	}
 
 	glp_smcp parm;
 	glp_init_smcp(&parm);
@@ -76,6 +76,7 @@ int main(){
 	int ia2[1+1000], ja2[1+1000];
 	double ar2[1+1000];
 
+	lp2 = glp_create_prob();
 	glp_set_prob_name(lp2, "Sac a dos");
 	glp_set_obj_dir(lp2, GLP_MAX);
 	glp_add_rows(lp2, 1);
@@ -87,22 +88,22 @@ int main(){
 	glp_set_col_bnds(lp2, 1, GLP_LO, 0.0, 0.0);
 	glp_set_obj_coef(lp2, 1, y1);
 	glp_set_col_kind(lp2,1,GLP_CV);
-	
+
 	glp_set_col_name(lp2, 2, "P2");
 	glp_set_col_bnds(lp2, 2, GLP_LO, 0.0, 0.0);
 	glp_set_obj_coef(lp2, 2, y2);
 	glp_set_col_kind(lp2,2,GLP_CV);
-	
+
 	glp_set_col_name(lp, 3, "P3");
 	glp_set_col_bnds(lp2, 3, GLP_LO, 0.0, 0.0);
 	glp_set_obj_coef(lp2, 3, y3);
 	glp_set_col_kind(lp2,3,GLP_CV);
-	
+
 	glp_set_col_name(lp2, 4, "P4");
 	glp_set_col_bnds(lp2, 4, GLP_LO, 0.0, 0.0);
 	glp_set_obj_coef(lp2, 4, y4);
 	glp_set_col_kind(lp2,4,GLP_CV);
-	
+
 	k=1;
 	for(j=1;j<5;j++){
 			ia2[k] = 1; ja2[k] = j; ar2[k] = matrix_coef2[k-1];
@@ -117,4 +118,5 @@ int main(){
 	glp_write_lp(lp2,NULL,"SacADos.txt");
 	printf("\nz = %g; x1 = %g; x2 = %g; x3 = %g; x4= %g; x5= %g; y1 = %g, y2 = %g, y3 = %g, y4 = %g \n",z, x1, x2, x3, x4, x5,y1,y2,y3,y4);
 	glp_delete_prob(lp);
+	glp_delete_prob(lp2);
 }

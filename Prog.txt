@@ -1,19 +1,12 @@
-\* Problem: Sac a dos *\
+\* Problem: découpe *\
 
 Minimize
- obj: + P1 + P2 + P3 + P4 + P5 + 0 x_6 + 0 x_7 + 0 x_8 + 0 x_9 + 0 x_10
+ obj: + P1 + P2 + P3 + P4 + P5
 
 Subject To
- R1: + P5 + P4 + P3 + P2 + 2 P1 <= 100
+ R1: + P5 + P4 + P3 + P2 + 2 P1 >= 97
  R2: + P3 + P2 >= 610
  R3: + P5 + P4 >= 395
  R4: + P4 + P2 >= 211
-
-Bounds
- x_6 = 0
- x_7 = 0
- x_8 = 0
- x_9 = 0
- x_10 = 0
 
 End

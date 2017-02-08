@@ -1,0 +1,9 @@
+\* Problem: Sac a dos *\
+
+Maximize
+ obj: + P2 + x_3
+
+Subject To
+ SOMME: + 14 P4 + 31 x_3 + 36 P2 + 45 P1 <= 100
+
+End
